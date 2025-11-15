@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-dark bg-dark px-4 d-flex justify-content-between align-items-center">
-    <a class="navbar-brand fw-bold" href="#">
+    <RouterLink to="/" class="navbar-brand fw-bold">
       Zona Desconocida
-    </a>
+    </RouterLink>
 
     <div class="d-flex align-items-center">
 
@@ -51,7 +51,14 @@
         </template>
 
         <template v-else>
-          <button 
+          <button
+            @click="$emit('open-register-modal')"
+            class="btn btn-outline-light text-white me-2"
+          >
+            <i class="bi bi-person-plus me-2"></i>
+            Crear Cuenta
+          </button>
+          <button
             @click="$emit('open-login-modal')"
             class="btn btn-outline-light text-white"
           >

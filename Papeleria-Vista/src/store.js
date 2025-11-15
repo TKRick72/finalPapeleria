@@ -33,7 +33,7 @@ auth.isLoggedIn = isLoggedIn;
 export async function login(email, password) {
     try {
         const response = await axios.post(`${API_URL}/login`, { email, password });
-        const { usuario: user, token } = response.data; 
+        const { usuario: user, token } = response.data;
 
         auth.token = token;
         auth.user = user;
@@ -46,10 +46,33 @@ export async function login(email, password) {
         // *** NUEVO: Obtener ofertas personalizadas después del login ***
         await fetchOfertas();
 
-        return true; 
+        return true;
     } catch (error) {
         console.error("Error de login:", error.response?.data?.message || error.message);
-        return false; 
+        return false;
+    }
+}
+
+export async function register(nombre, email, password, password_confirmation) {
+    try {
+        const response = await axios.post(`${API_URL}/registro`, { nombre, email, password, password_confirmation });
+        const { usuario: user, token } = response.data;
+
+        auth.token = token;
+        auth.user = user;
+
+        localStorage.setItem('auth_token', token);
+        localStorage.setItem('auth_user', JSON.stringify(user));
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+        // *** NUEVO: Obtener ofertas personalizadas después del registro ***
+        await fetchOfertas();
+
+        return true;
+    } catch (error) {
+        console.error("Error de registro:", error.response?.data?.message || error.message);
+        return false;
     }
 }
 

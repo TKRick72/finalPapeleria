@@ -33,12 +33,17 @@
           </div>
         </div>
         
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" @click="$emit('close')">Cancelar</button>
-          <button type="submit" class="btn btn-primary" :disabled="isLoading">
-            <span v-if="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-            Ingresar
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn btn-link text-decoration-none" @click="openForgotPassword">
+            ¿Olvidaste tu contraseña?
           </button>
+          <div>
+            <button type="button" class="btn btn-secondary me-2" @click="$emit('close')">Cancelar</button>
+            <button type="submit" class="btn btn-primary" :disabled="isLoading">
+              <span v-if="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+              Ingresar
+            </button>
+          </div>
         </div>
       </form>
     </div>
@@ -56,7 +61,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'open-forgot-password']);
 
 const credentials = reactive({
   email: '',
@@ -73,18 +78,22 @@ const handleLogin = async () => {
 
   // Llama a la acción login del store
   const success = await login(credentials.email, credentials.password);
-  
+
   isLoading.value = false;
 
   if (success) {
     // Si es exitoso, cierra el modal. La Navbar se actualiza automáticamente
-    emit('close'); 
+    emit('close');
     credentials.email = '';
     credentials.password = '';
   } else {
     // Muestra el mensaje de error si las credenciales son incorrectas
     errorMessage.value = 'Credenciales inválidas. Verifica tu email y contraseña.';
   }
+};
+
+const openForgotPassword = () => {
+  emit('open-forgot-password');
 };
 </script>
 
