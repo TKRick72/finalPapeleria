@@ -42,7 +42,7 @@ const error = ref(null);
 const selectedProduct = ref(null);
 let productModal = null;
 
-const API_URL = 'http://127.0.0.1:8000/api/productos';
+const API_URL = 'https://backend-production.up.railway.app/api/productos';
 
 const fetchProducts = async () => {
   loading.value = true;

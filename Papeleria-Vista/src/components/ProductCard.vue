@@ -65,7 +65,7 @@ const props = defineProps({
 
 const quantity = ref(1);
 const router = useRouter();
-const API_BASE_URL = 'http://127.0.0.1:8000'; // URL base de tu backend
+const API_BASE_URL = 'https://backend-production.up.railway.app'; // URL base de tu backend
 
 // Calcula la URL de la imagen dinámicamente
 const imageUrl = computed(() => {

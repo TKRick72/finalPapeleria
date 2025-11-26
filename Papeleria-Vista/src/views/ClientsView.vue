@@ -209,7 +209,7 @@ const clientsError = ref(null);
 const ordersError = ref(null);
 const shipmentsError = ref(null);
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = 'https://backend-production.up.railway.app/api';
 
 const fetchClients = async () => {
   clientsLoading.value = true;
