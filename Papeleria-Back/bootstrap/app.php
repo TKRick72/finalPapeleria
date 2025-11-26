@@ -12,13 +12,22 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Debes colocar el registro del alias de tu middleware aquí:
-        $middleware->alias([
-            'admin' => \App\Http\Middleware\AdminRoleMiddleware::class, // ¡Esta es la línea clave!
+        
+        // --- CONFIGURACIÓN CORS NUEVA ---
+        $middleware->validateCsrfTokens(except: [
+            'api/*', // Excluir rutas API de la protección CSRF si es necesario
         ]);
+
+        $middleware->append(\Illuminate\Http\Middleware\HandleCors::class); // Asegurar que CORS corra
+
+        // Configuración explícita de los headers
+        // Esto le dice a Laravel: "Confía en estas reglas de CORS"
+        // Nota: En Laravel 11 a veces es mejor dejar que el framework lo maneje
+        // pero si falla, podemos forzarlo aquí o usar el archivo de config publicado.
         
-        // Si ya tienes otros middlewares, agrégalos también dentro del alias
-        
+        $middleware->alias([
+            'admin' => \App\Http\Middleware\AdminRoleMiddleware::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
