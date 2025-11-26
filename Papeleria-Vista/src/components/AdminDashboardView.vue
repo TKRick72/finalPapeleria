@@ -94,7 +94,7 @@ const metrics = ref(null);
 const loading = ref(true);
 const error = ref(null);
 
-const API_URL = 'https://backend-production.up.railway.app/api';
+const API_URL = 'https://backend-production-9035.up.railway.app/api';
 
 const fetchMetrics = async () => {
     loading.value = true;

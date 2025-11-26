@@ -38,7 +38,7 @@ const topSuppliers = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-const API_URL = 'https://backend-production.up.railway.app/api/proveedores/top';
+const API_URL = 'https://backend-production-9035.up.railway.app/api/proveedores/top';
 
 const fetchTopSuppliers = async () => {
   loading.value = true;

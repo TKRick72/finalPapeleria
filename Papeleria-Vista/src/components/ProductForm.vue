@@ -57,7 +57,7 @@ const emit = defineEmits(['close', 'save']);
 
 const form = ref({});
 const suppliers = ref([]);
-const API_URL = 'https://backend-production.up.railway.app/api';
+const API_URL = 'https://backend-production-9035.up.railway.app/api';
 
 watch(() => props.product, (newVal) => {
   form.value = newVal ? { ...newVal } : { nombre: '', descripcion: '', precio: 0, stock: 0, proveedor_id: null };

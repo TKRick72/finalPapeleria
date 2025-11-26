@@ -46,7 +46,7 @@ const loading = ref(true);
 const error = ref(null);
 
 // Endpoint de tu API
-const API_URL = 'https://backend-production.up.railway.app/api';
+const API_URL = 'https://backend-production-9035.up.railway.app/api';
 
 // Función para cargar las categorías desde Laravel
 const fetchCategories = async () => {

@@ -67,7 +67,7 @@ const shippingData = ref(null);
 const paymentData = ref(null);
 const router = useRouter();
 
-const API_URL = 'https://backend-production.up.railway.app/api';
+const API_URL = 'https://backend-production-9035.up.railway.app/api';
 
 // Controla el avance de la barra
 const progressWidth = computed(() => {

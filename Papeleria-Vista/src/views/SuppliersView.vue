@@ -164,7 +164,7 @@ import axios from 'axios';
 import { Modal } from 'bootstrap';
 
 // --- Estado General ---
-const API_URL = 'https://backend-production.up.railway.app/api';
+const API_URL = 'https://backend-production-9035.up.railway.app/api';
 let supplierModal = null;
 
 // --- Pestaña 1: Gestión ---

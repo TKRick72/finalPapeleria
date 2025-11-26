@@ -28,7 +28,7 @@ import ProductCard from './ProductCard.vue'; // <-- ¡Componente de Card Princip
 const products = ref([]);
 const loading = ref(true);
 const error = ref(null);
-const API_URL = 'https://backend-production.up.railway.app/api';
+const API_URL = 'https://backend-production-9035.up.railway.app/api';
 
 // Función para cargar los productos aleatorios
 const fetchProducts = async () => {
